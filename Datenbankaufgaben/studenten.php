@@ -16,14 +16,15 @@ if($ergebnis1 != false){
             $note[] = $row2; 
         }
         
-        
+        $row["Noten"] = $note;
         
         }
-        $row["Noten"] = $note;
+        
         $studi[]=$row;
-        echo "<br>".json_encode($studi);
+        
     }
-
+echo json_encode($studi);
+        
 }
 
 include('closeDBConnection.php');
