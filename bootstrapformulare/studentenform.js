@@ -20,7 +20,7 @@ let index=0;
 function plus(){
 
     index++;
-    //let form= document.getElementsByTagName("form")[0];
+    
     let groupdiv=document.getElementById("grades");
     
     let divgroup=document.createElement("div");
@@ -34,9 +34,10 @@ function plus(){
     let inmodul=document.createElement("input");
     inmodul.setAttribute("type","text");
     inmodul.setAttribute("id","mo"+index);
-    //inmodul.setAttribute("name","modul"+index);
     inmodul.setAttribute("name","module[]");
     inmodul.setAttribute("class","form-control");
+    inmodul.setAttribute("required",true);
+    inmodul.setAttribute("minlength",3);
 
     let modultext= document.createElement("div");
     modultext.innerHTML="Der Modulname muss mind. 3 Zeichen lang sein";
@@ -52,14 +53,20 @@ function plus(){
     lnote.setAttribute("for","noten[]");
 
     let innote=document.createElement("input");
-    innote.setAttribute("type","text");
+    innote.setAttribute("type","number");
     innote.setAttribute("id","no"+index);
-    //innote.setAttribute("name","note"+index);
     innote.setAttribute("name","noten[]");
     innote.setAttribute("class","form-control");
+    innote.setAttribute("reqired",true);
+    innote.setAttribute("max",5)
+
+    let notetext= document.createElement("div");
+    notetext.innerHTML="sind nur noten zwischen 1 -5 möglich";
+    notetext.setAttribute("class","invalid-feedback");
 
     divgroup.appendChild(lnote);
     divgroup.appendChild(innote);
+    divgroup.appendChild(notetext);
     return index;
     
 }
@@ -87,13 +94,15 @@ function bootstrapValidate() {
     form.classList.add('was-validated');
     return true;
 }
+
+
 function checkAll(){
 let na= checkName();
 let matr=checkMat();
 let studie= checkStudiengang();
-let modu =checkModul();
-//let not= checkNote();
-return na && matr && studie && modu /* && not*/;
+/*let modu =checkModul();
+let not= checkNote();*/
+return na && matr && studie //&& modu && not;
 }
 
 function checkName(){
@@ -129,32 +138,12 @@ function checkStudiengang(){
 
 
 
-
-
-
-
 function checkModul(){
-    let modul= document.getElementsByName("modul[]");
-    
-    for(let i=0; i<modul.length;i++){
-       if(modul[i].value.length<3){
-        modul[i].setCustomValidity("-");
-        return false;
-    } 
-
-    modul.setCustomValidity("");
-    return true;
+    let modul= document.getElementsByName("module[]");
+    return modul.checkValidity();
 }
-}
-
 
 function checkNote(){
-    let note= document.getElementsByName("noten[]");
-    if(note.value<0 || note.value>5){
-        note.setCustomValidity("-");
-        return false;
-    }
-    note.setCustomValidity("");
-    return true;
+    let note= document.getElementById("noten[]");
+    return note.checkValidity();
 }
-

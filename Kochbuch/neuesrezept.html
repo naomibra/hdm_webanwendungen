@@ -30,10 +30,110 @@
         </ul>
       </div>
     </nav>
+<div class="container">
+     <h1>Neues Rezept </h1>
+     <p> bitte alles ausfüllen </p>
 
-     
+     <form method="POST" novalidate action="neuesrezept.php" onsubmit="" >
+       <div class="form-group">
+         <label for="rname">Rezeptname</label>
+         <input type="text"  class="form-control" name="rname" required maxlength="100">
+         <div class="invalide-feedback">Name muss gesetzt sein </div>
+       </div>
+       
+       <div class="form-group">
+        <label for="kurzb">Kurzbeschreibung</label>
+        <input type="text"  class="form-control" name="kurzb" required maxlength="500">
+        <div class="invalide-feedback">muss gesetzt sein </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dauer">dauer</label>
+        <p id="wert"></p>
+        <input type="range" min="5" max="120" name="dauer" onchange="slide()">
+      </div>
+       
+      <div class="form-group">
+        <label for="schwiergkeit">Schwierigkeitsgrad</label>
+        <input type="radio" name="schwiergkeit" value="einfach" class="form-control">einfach</input>
+        <input type="radio" name="schwiergkeit" value="mittle" class="form-control">mittle</input>
+        <input type="radio" name="schwiergkeit" value="schwer" class="form-control">schwer</input>
+
+      </div>
+
+       <div class="form-group">
+         <label>Kategorie</label>
+         <select class="form-control" id="wahl" name="liste" required>
+          <option value="wähle">Wähle</option>
+          <option value="snack">Snack</option>
+          <option value="fleisch">Fleisch</option>
+          <option value="vegetarisch">Vegetarisch</option>
+          <option value="fisch">Fisch</option>
+          <option value="dessert">Dessert</option>
+        
+      </select>
+      <div class="invalid-feedback"> bitte wählen sie aus</div>
+       </div>
+
+       <div class="form-group">
+         <label for="zubereitung">Zubereitung</label>
+         <input type="text" name="zubereitung" class="form-control" size="70">
+       </div>
+
+       <div  id="ingrediens">
+        <p>Zutaten</p> 
+        <template display="on">
+       <div class="form-group" id="ing">
+        
+        
+         <label for="menge">Menge</label>
+         <input type="text" class="form-control" name="menge[]">
+
+         <label>Einheit</label>
+         <select class="form-control" id="einheiten" name="einheitenauswahl" size="1">
+          <option value="wähle">Wähle</option>
+          <option value="becher">Becher</option>
+          <option value="gram">Gram</option>
+          <option value="liter">liter</option>
+         </select>
+          <label for="zname">Name</label>
+          <input type="text" class="form-control" name="zname[]" required>
+          <div class="invalide-feedback">zutatenname muss gesetzt sein </div>
+         
+       </div>
+     </template>
+
+     <div class="form-group" id="erste">
+        
+        
+      <label for="menge">Menge</label>
+      <input type="text" class="form-control" name="menge[]">
+
+      <label>Einheit</label>
+      <select class="form-control" id="einheiten" name="einheitenauswahl" size="1">
+       <option value="wähle">Wähle</option>
+       <option value="becher">Becher</option>
+       <option value="gram">Gram</option>
+       <option value="liter">liter</option>
+      </select>
+       <label for="zname">Name</label>
+       <input type="text" class="form-control" name="zname[]" required>
+       <div class="invalide-feedback">zutatenname muss gesetzt sein </div>
       
+    </div>
+      </div>
 
+      <div class="form-group" id="buttonss">
+        <input type="button" value="+" class="form-control" onclick="plus()">
+        <input type="button" value="-" class="form-control" onclick="minus()">
+    </div>
+
+    <div class="form-group">
+      <button class="form-control" name="speichern" type="submit" >Speichern</button>
+    </div>
+     </form>
+      
+</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -43,5 +143,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
+    <script src="neuesrezepte.js"></script>
   </body>
 </html>

@@ -39,11 +39,11 @@
 <div class="form-group" id="grades">
                 <div class="form-group" >
                 <label for="modul">Modul</label>
-                <input type="text" class="form-contol" id="modul" name="module[]">
+                <input type="text" class="form-contol" id="modul" name="module[]" required minlength="3">
                 <div class="invalid-feedback"> des modul muss min 3 buchstaben haben</div>
                 
                 <label for="note">Note</label>
-                <input type="text" class="form-contol" id="note" name="noten[]">
+                <input type="text" class="form-contol" id="note" name="noten[]" required max="5">
                 <div class="invalid-feedback">sind nur noten zwischen 1 -5 möglich</div>
                  </div>
            
