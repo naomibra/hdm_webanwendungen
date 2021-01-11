@@ -34,36 +34,42 @@
      <h1>Neues Rezept </h1>
      <p> bitte alles ausfüllen </p>
 
-     <form method="POST" novalidate action="neuesrezept.php" onsubmit="" >
+     
+     <form  action="neuesrezept.php" method="POST" enctype="multipart/form-data" >
        <div class="form-group">
-         <label for="rname">Rezeptname</label>
-         <input type="text"  class="form-control" name="rname" required maxlength="100">
-         <div class="invalide-feedback">Name muss gesetzt sein </div>
+         <label for="rn">Rezeptname</label>
+         <input type="text"  class="form-control" name="rname" id="rn" required maxlength="100">
+         <div class="invalid-feedback">Name muss gesetzt sein </div>
        </div>
        
        <div class="form-group">
-        <label for="kurzb">Kurzbeschreibung</label>
-        <input type="text"  class="form-control" name="kurzb" required maxlength="500">
-        <div class="invalide-feedback">muss gesetzt sein </div>
+        <label for="kuzb" class="form-label">Kurzbeschreibung</label>
+        <input type="text"  class="form-control"  id="kuzb" name="kurzb" required maxlength="500">
+        <div class="invalid-feedback">muss gesetzt sein </div>
       </div>
 
       <div class="form-group">
-        <label for="dauer">dauer</label>
+        <label for="dau" class="form-label">dauer</label>
         <p id="wert"></p>
-        <input type="range" min="5" max="120" name="dauer" onchange="slide()">
+        <input type="range" min="5" max="120" name="dauer" id="dau" onchange="slide()">
       </div>
        
       <div class="form-group">
-        <label for="schwiergkeit">Schwierigkeitsgrad</label>
+        <label for="schwiergkeit" class="form-label">Schwierigkeitsgrad</label>
         <input type="radio" name="schwiergkeit" value="einfach" class="form-control">einfach</input>
         <input type="radio" name="schwiergkeit" value="mittle" class="form-control">mittle</input>
         <input type="radio" name="schwiergkeit" value="schwer" class="form-control">schwer</input>
+
+      </div class="form-group">
+      <label class="form-label">Bild</label>
+      <input type="file" name="bild" accept="img/jpg">
+      <div>
 
       </div>
 
        <div class="form-group">
          <label>Kategorie</label>
-         <select class="form-control" id="wahl" name="liste" required>
+         <select class="form-select" id="wahl" name="liste" required>
           <option value="wähle">Wähle</option>
           <option value="snack">Snack</option>
           <option value="fleisch">Fleisch</option>
@@ -81,24 +87,25 @@
        </div>
 
        <div  id="ingrediens">
-        <p>Zutaten</p> 
-        <template display="on">
+        <h2>Zutaten</h2> 
+        <template >
        <div class="form-group" id="ing">
         
         
-         <label for="menge">Menge</label>
-         <input type="text" class="form-control" name="menge[]">
+         <label for="menge" class="form-label">Menge</label>
+         <input type="number" class="form-control" name="menge[]">
 
-         <label>Einheit</label>
-         <select class="form-control" id="einheiten" name="einheitenauswahl" size="1">
+         <label class="form-label">Einheit</label>
+         <select class="form-select" id="einheiten" name="einheitenauswahl[]" size="1">
           <option value="wähle">Wähle</option>
           <option value="becher">Becher</option>
-          <option value="gram">Gram</option>
+          <option value="gramm">Gramm</option>
           <option value="liter">liter</option>
+          
          </select>
-          <label for="zname">Name</label>
+          <label for="zname" class="form-label">Name</label>
           <input type="text" class="form-control" name="zname[]" required>
-          <div class="invalide-feedback">zutatenname muss gesetzt sein </div>
+          <div class="invalid-feedback">zutatenname muss gesetzt sein </div>
          
        </div>
      </template>
@@ -106,19 +113,19 @@
      <div class="form-group" id="erste">
         
         
-      <label for="menge">Menge</label>
-      <input type="text" class="form-control" name="menge[]">
+      <label for="menge" class="form-label">Menge</label>
+      <input type="number" class="form-control" name="menge[]">
 
       <label>Einheit</label>
-      <select class="form-control" id="einheiten" name="einheitenauswahl" size="1">
+      <select class="form-select" id="einheiten" name="einheitenauswahl[]" size="1">
        <option value="wähle">Wähle</option>
        <option value="becher">Becher</option>
-       <option value="gram">Gram</option>
+       <option value="gramm">Gramm</option>
        <option value="liter">liter</option>
       </select>
-       <label for="zname">Name</label>
+       <label for="zname" class="form-label">Name</label>
        <input type="text" class="form-control" name="zname[]" required>
-       <div class="invalide-feedback">zutatenname muss gesetzt sein </div>
+       <div class="invalid-feedback">zutatenname muss gesetzt sein </div>
       
     </div>
       </div>
@@ -129,20 +136,20 @@
     </div>
 
     <div class="form-group">
-      <button class="form-control" name="speichern" type="submit" >Speichern</button>
+      <button type="submit" name="speichern"  >Speichern</button>
     </div>
      </form>
       
 </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+crossorigin="anonymous"></script>
     <script src="neuesrezepte.js"></script>
   </body>
 </html>

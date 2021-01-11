@@ -56,3 +56,53 @@ function slide(){
     p.innerHTML= sliderr+" minuten";
 
 }
+
+//onsbmit
+
+function checkcheck(){
+    let t=checkTitel();
+    let kb= checkKurzbeschreibung();
+    let d=checkDauer();
+    let s=checkSchwierigkeit();
+    let kat=checkKategorie();
+    let zb=checkZubereitung();
+    
+    return t && kb && d && s && kat && zb;
+}
+
+function checkTitel(){
+    let field=document.getElementsByName("rname")[0];
+    return field.checkValidity();
+}
+
+function checkKurzbeschreibung(){
+    let field=document.getElementsByName("kurzb")[0];
+    return field.checkValidity();
+    
+}
+
+function checkDauer(){
+    let field=document.getElementsByName("dauer")[0];
+    return field.checkValidity();
+
+}
+
+function checkSchwierigkeit(){
+    let field=document.getElementsByName("schwiergkeit");
+    return field.checkValidity();
+
+}
+
+function checkKategorie(){
+    let field=document.getElementsByName("liste")[0];
+    if(field.value!="wähle"){
+         return field.checkValidity();
+    }
+   
+}
+
+function checkZubereitung(){
+    let field=document.getElementsByName("zubereitung")[0];
+    return field.checkValidity();
+
+}
