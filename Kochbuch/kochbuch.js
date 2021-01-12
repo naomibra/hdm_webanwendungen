@@ -63,7 +63,7 @@ function inhalteEinfuegen(array){
         divcard.appendChild(h3);
 
         let h4=document.createElement("h4");
-        h4.innerHTML=array[i].Dauer;
+        h4.innerHTML=array[i].Dauer+" Minuten";
         h4.setAttribute("class","card-text");
         divcard.appendChild(h4);
 

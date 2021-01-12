@@ -11,6 +11,10 @@ $ztext=$_POST["zubereitung"];
 
 //Bild
 $filename = mktime().jpg;
+if (isset($_FILES['bild']) && $_FILES['bild']['error'] == 0) {
+    echo "das bild ist da";
+ };
+
 move_uploaded_file($_FILES['bild']['tmp_name'],"kochbuchbilder/".$filename);
 $_FILES['bild']['name'];
 $bild="http://localhost:8888/webanwendungen/Kochbuch/kochbuchbilder/".$filename;
